@@ -1,0 +1,17 @@
+
+{
+    "_QPVersion": "0.1.1",
+    "name": "Qosmetics Qounters",
+    "id": "QosmeticsQounters",
+    "author": "rui2015",
+    "version": "0.1.0",
+    "packageId": "com.beatgames.beatsaber",
+    "packageVersion": "1.16.4",
+    "description": "This mod adds three custom Qounters that allow you to check the names of the active sabers, walls or bloqs while playing a song",
+    "modFiles": [
+        "libQosmeticsQounters.so"
+    ],
+    "libraryFiles": [
+        "libbeatsaber-hook_2_2_5.so"
+    ]
+}
