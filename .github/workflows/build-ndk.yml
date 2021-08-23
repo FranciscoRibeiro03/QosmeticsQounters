@@ -144,11 +144,7 @@ jobs:
     - name: Build
       run: |
         cd ${GITHUB_WORKSPACE}
-        pwsh -Command ./build.ps1
-    - name: Create Qmod
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        pwsh -Command ./CreateQmod.ps1
+        pwsh -Command ./buildQMOD.ps1
     # get the library name, by checking against the module ID
     - name: Get Library Name
       id: libname
