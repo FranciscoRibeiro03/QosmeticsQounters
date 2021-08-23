@@ -9,6 +9,8 @@ DECLARE_CLASS_CUSTOM(QosmeticsQounters, CustomNotesQounter, QountersMinus::Qount
     static int Position;
     static int Distance;
 
+    static float FontSize;
+
     DECLARE_STATIC_METHOD(void, Register);
     DECLARE_INSTANCE_METHOD(void, Start);
 
