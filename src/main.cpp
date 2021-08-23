@@ -46,7 +46,7 @@ extern "C" void load() {
     // Check if Qosmetics exists. If it doesn't, stop loading the mod (it doesn't make sense to have the mod in this case)
     getLogger().info("Ensuring Qosmetics is loaded");
     Modloader::requireMod("questcosmetics");
-    if (!Qosmetic::API::GetExists()) return;
+    if (!Qosmetics::API::GetExists()) return;
 
     // Register my own custom type
     getLogger().info("Registering custom types");
