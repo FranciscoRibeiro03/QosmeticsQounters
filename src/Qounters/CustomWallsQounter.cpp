@@ -10,6 +10,7 @@ int QosmeticsQounters::CustomWallsQounter::Position = static_cast<int>(QountersM
 int QosmeticsQounters::CustomWallsQounter::Distance = 2.0f;
 
 float QosmeticsQounters::CustomWallsQounter::FontSize = 35.0f;
+bool QosmeticsQounters::CustomWallsQounter::ShowAuthor = false;
 
 void QosmeticsQounters::CustomWallsQounter::Register() {
     QountersMinus::QounterRegistry::Register<QosmeticsQounters::CustomWallsQounter>("Custom Walls", "Custom Walls Qounter", "CustomWallsQounterConfig");
@@ -21,6 +22,13 @@ void QosmeticsQounters::CustomWallsQounter::Register() {
         .type = QountersMinus::QounterRegistry::ConfigType::Float,
         .floatMin = 0.0f,
     });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
+        .ptr = &ShowAuthor,
+        .field = "ShowAuthor",
+        .displayName = "Show Author",
+        .helpText = "Show the author name on the Custom Walls Qounter?",
+        .type = QountersMinus::QounterRegistry::ConfigType::Bool,
+    });
 }
 
 void QosmeticsQounters::CustomWallsQounter::Start() {
@@ -31,7 +39,11 @@ void QosmeticsQounters::CustomWallsQounter::Start() {
 }
 
 void QosmeticsQounters::CustomWallsQounter::UpdateWalls() {
-    std::string activeNote = Qosmetics::WallAPI::GetWallIsCustom().value_or(false) ? Qosmetics::WallAPI::GetActiveWallDescriptor().value().get_name() : "Default";
-    basicText->set_text(il2cpp_utils::createcsstr("Walls: " + activeNote));
+    bool isCustomWall = Qosmetics::WallAPI::GetWallIsCustom().value_or(false);
+    std::string activeWall = isCustomWall ? Qosmetics::WallAPI::GetActiveWallDescriptor().value().get_name() : "Default";
+    if (ShowAuthor) {
+        activeWall += isCustomWall ? " by " + Qosmetics::WallAPI::GetActiveWallDescriptor().value().get_author() : "";
+    }
+    basicText->set_text(il2cpp_utils::createcsstr("Walls: " + activeWall));
     basicText->set_fontSize(FontSize);
 }

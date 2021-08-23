@@ -10,6 +10,7 @@ int QosmeticsQounters::CustomNotesQounter::Position = static_cast<int>(QountersM
 int QosmeticsQounters::CustomNotesQounter::Distance = 1.0f;
 
 float QosmeticsQounters::CustomNotesQounter::FontSize = 35.0f;
+bool QosmeticsQounters::CustomNotesQounter::ShowAuthor = false;
 
 void QosmeticsQounters::CustomNotesQounter::Register() {
     QountersMinus::QounterRegistry::Register<QosmeticsQounters::CustomNotesQounter>("Custom Notes", "Custom Notes Qounter", "CustomNotesQounterConfig");
@@ -21,6 +22,13 @@ void QosmeticsQounters::CustomNotesQounter::Register() {
         .type = QountersMinus::QounterRegistry::ConfigType::Float,
         .floatMin = 0.0f,
     });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomNotesQounter>({
+        .ptr = &ShowAuthor,
+        .field = "ShowAuthor",
+        .displayName = "Show Author",
+        .helpText = "Show the author name on the Custom Notes Qounter?",
+        .type = QountersMinus::QounterRegistry::ConfigType::Bool,
+    });
 }
 
 void QosmeticsQounters::CustomNotesQounter::Start() {
@@ -31,7 +39,11 @@ void QosmeticsQounters::CustomNotesQounter::Start() {
 }
 
 void QosmeticsQounters::CustomNotesQounter::UpdateNotes() {
-    std::string activeNote = Qosmetics::NoteAPI::GetNoteIsCustom().value_or(false) ? Qosmetics::NoteAPI::GetActiveNoteDescriptor().value().get_name() : "Default";
+    bool isCustomNote = Qosmetics::NoteAPI::GetNoteIsCustom().value_or(false);
+    std::string activeNote = isCustomNote ? Qosmetics::NoteAPI::GetActiveNoteDescriptor().value().get_name() : "Default";
+    if (ShowAuthor) {
+        activeNote += isCustomNote ? " by " + Qosmetics::NoteAPI::GetActiveNoteDescriptor().value().get_author() : "";
+    }
     basicText->set_text(il2cpp_utils::createcsstr("Notes: " + activeNote));
     basicText->set_fontSize(FontSize);
 }

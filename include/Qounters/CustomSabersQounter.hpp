@@ -10,6 +10,7 @@ DECLARE_CLASS_CUSTOM(QosmeticsQounters, CustomSabersQounter, QountersMinus::Qoun
     static int Distance;
 
     static float FontSize;
+    static bool ShowAuthor;
 
     DECLARE_STATIC_METHOD(void, Register);
     DECLARE_INSTANCE_METHOD(void, Start);
