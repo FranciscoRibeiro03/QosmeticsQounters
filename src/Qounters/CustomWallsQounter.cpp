@@ -31,7 +31,7 @@ void QosmeticsQounters::CustomWallsQounter::Start() {
 }
 
 void QosmeticsQounters::CustomWallsQounter::UpdateWalls() {
-    std::string activeNote = Qosmetics::WallAPI::GetWallIsCustom().value_or(false) ? "Custom" : "Default";
+    std::string activeNote = Qosmetics::WallAPI::GetWallIsCustom().value_or(false) ? Qosmetics::WallAPI::GetActiveWallDescriptor().value().get_name() : "Default";
     basicText->set_text(il2cpp_utils::createcsstr("Walls: " + activeNote));
     basicText->set_fontSize(FontSize);
 }

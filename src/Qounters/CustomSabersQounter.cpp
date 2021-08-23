@@ -31,7 +31,7 @@ void QosmeticsQounters::CustomSabersQounter::Start() {
 }
 
 void QosmeticsQounters::CustomSabersQounter::UpdateSabers() {
-    std::string activeSaber = Qosmetics::SaberAPI::GetSaberIsCustom().value_or(false) ? "Custom" : "Default";
+    std::string activeSaber = Qosmetics::SaberAPI::GetSaberIsCustom().value_or(false) ? Qosmetics::SaberAPI::GetActiveSaberDescriptor().value().get_name() : "Default";
     basicText->set_text(il2cpp_utils::createcsstr("Sabers: " + activeSaber));
     basicText->set_fontSize(FontSize);
 }

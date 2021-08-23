@@ -31,7 +31,7 @@ void QosmeticsQounters::CustomNotesQounter::Start() {
 }
 
 void QosmeticsQounters::CustomNotesQounter::UpdateNotes() {
-    std::string activeNote = Qosmetics::NoteAPI::GetNoteIsCustom().value_or(false) ? "Custom" : "Default";
+    std::string activeNote = Qosmetics::NoteAPI::GetNoteIsCustom().value_or(false) ? Qosmetics::NoteAPI::GetActiveNoteDescriptor().value().get_name() : "Default";
     basicText->set_text(il2cpp_utils::createcsstr("Notes: " + activeNote));
     basicText->set_fontSize(FontSize);
 }
