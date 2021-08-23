@@ -11,6 +11,7 @@ int QosmeticsQounters::CustomNotesQounter::Distance = 1.0f;
 
 float QosmeticsQounters::CustomNotesQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomNotesQounter::ShowAuthor = false;
+UnityEngine::Color QosmeticsQounters::CustomNotesQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomNotesQounter::Register() {
     QountersMinus::QounterRegistry::Register<QosmeticsQounters::CustomNotesQounter>("Custom Notes", "Custom Notes Qounter", "CustomNotesQounterConfig");
@@ -29,6 +30,13 @@ void QosmeticsQounters::CustomNotesQounter::Register() {
         .helpText = "Show the author name on the Custom Notes Qounter?",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomNotesQounter>({
+        .ptr = &TextColor,
+        .field = "TextColor",
+        .displayName = "Text Color",
+        .helpText = "Select the text color for the Custom Notes Qounter.",
+        .type = QountersMinus::QounterRegistry::ConfigType::Color,
+    });
 }
 
 void QosmeticsQounters::CustomNotesQounter::Start() {
@@ -46,4 +54,5 @@ void QosmeticsQounters::CustomNotesQounter::UpdateNotes() {
     }
     basicText->set_text(il2cpp_utils::createcsstr("Notes: " + activeNote));
     basicText->set_fontSize(FontSize);
+    basicText->set_color(TextColor);
 }

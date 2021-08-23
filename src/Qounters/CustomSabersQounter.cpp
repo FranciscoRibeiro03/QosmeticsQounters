@@ -11,6 +11,7 @@ int QosmeticsQounters::CustomSabersQounter::Distance = 0.0f;
 
 float QosmeticsQounters::CustomSabersQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomSabersQounter::ShowAuthor = false;
+UnityEngine::Color QosmeticsQounters::CustomSabersQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomSabersQounter::Register() {
     QountersMinus::QounterRegistry::Register<QosmeticsQounters::CustomSabersQounter>("Custom Sabers", "Custom Sabers Qounter", "CustomSabersQounterConfig");
@@ -29,6 +30,13 @@ void QosmeticsQounters::CustomSabersQounter::Register() {
         .helpText = "Show the author name on the Custom Sabers Qounter?",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomSabersQounter>({
+        .ptr = &TextColor,
+        .field = "TextColor",
+        .displayName = "Text Color",
+        .helpText = "Select the text color for the Custom Sabers Qounter.",
+        .type = QountersMinus::QounterRegistry::ConfigType::Color,
+    });
 }
 
 void QosmeticsQounters::CustomSabersQounter::Start() {
@@ -46,4 +54,5 @@ void QosmeticsQounters::CustomSabersQounter::UpdateSabers() {
     }
     basicText->set_text(il2cpp_utils::createcsstr("Sabers: " + activeSaber));
     basicText->set_fontSize(FontSize);
+    basicText->set_color(TextColor);
 }

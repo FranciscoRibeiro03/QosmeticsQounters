@@ -11,6 +11,7 @@ DECLARE_CLASS_CUSTOM(QosmeticsQounters, CustomWallsQounter, QountersMinus::Qount
 
     static float FontSize;
     static bool ShowAuthor;
+    static UnityEngine::Color TextColor;
 
     DECLARE_STATIC_METHOD(void, Register);
     DECLARE_INSTANCE_METHOD(void, Start);

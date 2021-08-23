@@ -11,6 +11,7 @@ int QosmeticsQounters::CustomWallsQounter::Distance = 2.0f;
 
 float QosmeticsQounters::CustomWallsQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomWallsQounter::ShowAuthor = false;
+UnityEngine::Color QosmeticsQounters::CustomWallsQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomWallsQounter::Register() {
     QountersMinus::QounterRegistry::Register<QosmeticsQounters::CustomWallsQounter>("Custom Walls", "Custom Walls Qounter", "CustomWallsQounterConfig");
@@ -29,6 +30,13 @@ void QosmeticsQounters::CustomWallsQounter::Register() {
         .helpText = "Show the author name on the Custom Walls Qounter?",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
+        .ptr = &TextColor,
+        .field = "TextColor",
+        .displayName = "Text Color",
+        .helpText = "Select the text color for the Custom Walls Qounter.",
+        .type = QountersMinus::QounterRegistry::ConfigType::Color,
+    });
 }
 
 void QosmeticsQounters::CustomWallsQounter::Start() {
@@ -46,4 +54,5 @@ void QosmeticsQounters::CustomWallsQounter::UpdateWalls() {
     }
     basicText->set_text(il2cpp_utils::createcsstr("Walls: " + activeWall));
     basicText->set_fontSize(FontSize);
+    basicText->set_color(TextColor);
 }
