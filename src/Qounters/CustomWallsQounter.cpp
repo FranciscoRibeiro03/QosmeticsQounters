@@ -4,6 +4,7 @@
 #include "qosmetics-api/shared/WallAPI.hpp"
 
 #include "Utils/QountersUtils.hpp"
+#include "Utils/TextUtils.hpp"
 
 DEFINE_TYPE(QosmeticsQounters, CustomWallsQounter);
 
@@ -36,8 +37,8 @@ void QosmeticsQounters::CustomWallsQounter::Register() {
     QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
         .ptr = &RainbowText,
         .field = "RainbowText",
-        .displayName = "Rainbow Text",
-        .helpText = "Make the color of this Qounter rainbow. NOTE: Overrides the Text Color config!",
+        .displayName = TextUtils::rainbowify("Rainbow") + " Text",
+        .helpText = "Make the color of this Qounter " + TextUtils::rainbowify("rainbow") + ". NOTE: Overrides the Text Color config!",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
     QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
