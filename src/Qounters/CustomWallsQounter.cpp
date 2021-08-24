@@ -13,6 +13,7 @@ int QosmeticsQounters::CustomWallsQounter::Distance = 2.0f;
 
 float QosmeticsQounters::CustomWallsQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomWallsQounter::ShowAuthor = false;
+bool QosmeticsQounters::CustomWallsQounter::RainbowText = false;
 UnityEngine::Color QosmeticsQounters::CustomWallsQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomWallsQounter::Register() {
@@ -30,6 +31,13 @@ void QosmeticsQounters::CustomWallsQounter::Register() {
         .field = "ShowAuthor",
         .displayName = "Show Author",
         .helpText = "Show the author name on the Custom Walls Qounter?",
+        .type = QountersMinus::QounterRegistry::ConfigType::Bool,
+    });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
+        .ptr = &RainbowText,
+        .field = "RainbowText",
+        .displayName = "Rainbow Text",
+        .helpText = "Make the color of this Qounter rainbow. NOTE: Overrides the Text Color config!",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
     QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomWallsQounter>({
@@ -56,5 +64,5 @@ void QosmeticsQounters::CustomWallsQounter::UpdateWalls() {
     }
     basicText->set_fontSize(FontSize);
     std::string textToShow = "Walls: " + activeWall;
-    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor, RainbowText);
 }

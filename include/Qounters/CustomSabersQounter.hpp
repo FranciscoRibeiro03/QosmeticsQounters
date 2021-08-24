@@ -11,6 +11,7 @@ DECLARE_CLASS_CUSTOM(QosmeticsQounters, CustomSabersQounter, QountersMinus::Qoun
 
     static float FontSize;
     static bool ShowAuthor;
+    static bool RainbowText;
     static UnityEngine::Color TextColor;
 
     DECLARE_STATIC_METHOD(void, Register);

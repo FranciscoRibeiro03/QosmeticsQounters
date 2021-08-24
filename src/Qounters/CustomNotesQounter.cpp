@@ -13,6 +13,7 @@ int QosmeticsQounters::CustomNotesQounter::Distance = 1.0f;
 
 float QosmeticsQounters::CustomNotesQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomNotesQounter::ShowAuthor = false;
+bool QosmeticsQounters::CustomNotesQounter::RainbowText = false;
 UnityEngine::Color QosmeticsQounters::CustomNotesQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomNotesQounter::Register() {
@@ -30,6 +31,13 @@ void QosmeticsQounters::CustomNotesQounter::Register() {
         .field = "ShowAuthor",
         .displayName = "Show Author",
         .helpText = "Show the author name on the Custom Notes Qounter?",
+        .type = QountersMinus::QounterRegistry::ConfigType::Bool,
+    });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomNotesQounter>({
+        .ptr = &RainbowText,
+        .field = "RainbowText",
+        .displayName = "Rainbow Text",
+        .helpText = "Make the color of this Qounter rainbow. NOTE: Overrides the Text Color config!",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
     QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomNotesQounter>({
@@ -56,5 +64,5 @@ void QosmeticsQounters::CustomNotesQounter::UpdateNotes() {
     }
     basicText->set_fontSize(FontSize);
     std::string textToShow = "Notes: " + activeNote;
-    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor, RainbowText);
 }

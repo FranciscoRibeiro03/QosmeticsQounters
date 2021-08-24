@@ -13,6 +13,7 @@ int QosmeticsQounters::CustomSabersQounter::Distance = 0.0f;
 
 float QosmeticsQounters::CustomSabersQounter::FontSize = 35.0f;
 bool QosmeticsQounters::CustomSabersQounter::ShowAuthor = false;
+bool QosmeticsQounters::CustomSabersQounter::RainbowText = false;
 UnityEngine::Color QosmeticsQounters::CustomSabersQounter::TextColor = UnityEngine::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 void QosmeticsQounters::CustomSabersQounter::Register() {
@@ -30,6 +31,13 @@ void QosmeticsQounters::CustomSabersQounter::Register() {
         .field = "ShowAuthor",
         .displayName = "Show Author",
         .helpText = "Show the author name on the Custom Sabers Qounter?",
+        .type = QountersMinus::QounterRegistry::ConfigType::Bool,
+    });
+    QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomSabersQounter>({
+        .ptr = &RainbowText,
+        .field = "RainbowText",
+        .displayName = "Rainbow Text",
+        .helpText = "Make the color of this Qounter rainbow. NOTE: Overrides the Text Color config!",
         .type = QountersMinus::QounterRegistry::ConfigType::Bool,
     });
     QountersMinus::QounterRegistry::RegisterConfig<QosmeticsQounters::CustomSabersQounter>({
@@ -56,5 +64,5 @@ void QosmeticsQounters::CustomSabersQounter::UpdateSabers() {
     }
     basicText->set_fontSize(FontSize);
     std::string textToShow = "Sabers: " + activeSaber;
-    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor, RainbowText);
 }
