@@ -3,6 +3,8 @@
 #include "qosmetics-api/shared/QosmeticsAPI.hpp"
 #include "qosmetics-api/shared/SaberAPI.hpp"
 
+#include "Utils/QountersUtils.hpp"
+
 DEFINE_TYPE(QosmeticsQounters, CustomSabersQounter);
 
 bool QosmeticsQounters::CustomSabersQounter::Enabled = true;
@@ -52,7 +54,7 @@ void QosmeticsQounters::CustomSabersQounter::UpdateSabers() {
     if (ShowAuthor) {
         activeSaber += isCustomSaber ? " by " + Qosmetics::SaberAPI::GetActiveSaberDescriptor().value().get_author() : "";
     }
-    basicText->set_text(il2cpp_utils::createcsstr("Sabers: " + activeSaber));
     basicText->set_fontSize(FontSize);
-    basicText->set_color(TextColor);
+    std::string textToShow = "Sabers: " + activeSaber;
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
 }

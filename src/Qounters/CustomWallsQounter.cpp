@@ -3,6 +3,8 @@
 #include "qosmetics-api/shared/QosmeticsAPI.hpp"
 #include "qosmetics-api/shared/WallAPI.hpp"
 
+#include "Utils/QountersUtils.hpp"
+
 DEFINE_TYPE(QosmeticsQounters, CustomWallsQounter);
 
 bool QosmeticsQounters::CustomWallsQounter::Enabled = true;
@@ -52,7 +54,7 @@ void QosmeticsQounters::CustomWallsQounter::UpdateWalls() {
     if (ShowAuthor) {
         activeWall += isCustomWall ? " by " + Qosmetics::WallAPI::GetActiveWallDescriptor().value().get_author() : "";
     }
-    basicText->set_text(il2cpp_utils::createcsstr("Walls: " + activeWall));
     basicText->set_fontSize(FontSize);
-    basicText->set_color(TextColor);
+    std::string textToShow = "Walls: " + activeWall;
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
 }

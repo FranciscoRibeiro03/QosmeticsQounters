@@ -3,6 +3,8 @@
 #include "qosmetics-api/shared/QosmeticsAPI.hpp"
 #include "qosmetics-api/shared/NoteAPI.hpp"
 
+#include "Utils/QountersUtils.hpp"
+
 DEFINE_TYPE(QosmeticsQounters, CustomNotesQounter);
 
 bool QosmeticsQounters::CustomNotesQounter::Enabled = true;
@@ -52,7 +54,7 @@ void QosmeticsQounters::CustomNotesQounter::UpdateNotes() {
     if (ShowAuthor) {
         activeNote += isCustomNote ? " by " + Qosmetics::NoteAPI::GetActiveNoteDescriptor().value().get_author() : "";
     }
-    basicText->set_text(il2cpp_utils::createcsstr("Notes: " + activeNote));
     basicText->set_fontSize(FontSize);
-    basicText->set_color(TextColor);
+    std::string textToShow = "Notes: " + activeNote;
+    QountersUtils::setQounterTextWithColor(basicText, textToShow, TextColor);
 }
