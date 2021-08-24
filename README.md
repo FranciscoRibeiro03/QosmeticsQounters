@@ -2,8 +2,6 @@
 
 This mod adds three Custom Qounters that allow you to check the names of the active sabers, walls or bloqs while playing a song
 
-As of now, the mod just shows if the sabers that are being used are `Custom` or `Default`, not the actual names
-
 ## Requirements
 
 * [Qosmetics 1.3.0](https://github.com/RedBrumbler/Qosmetics/releases/tag/v1.3.0)
