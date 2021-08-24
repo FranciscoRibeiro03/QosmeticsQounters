@@ -7,6 +7,6 @@ class QountersUtils
 {
 
     public: 
-        static void setQounterTextWithColor(TMPro::TextMeshProUGUI* basicText, std::string text, UnityEngine::Color color);
+        static void setQounterTextWithColor(TMPro::TextMeshProUGUI* basicText, std::string text, UnityEngine::Color color, bool forceRainbow = false);
 
 };
