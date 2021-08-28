@@ -4,8 +4,8 @@ This mod adds three Custom Qounters that allow you to check the names of the act
 
 ## Requirements
 
-* [Qosmetics 1.3.0](https://github.com/RedBrumbler/Qosmetics/releases/tag/v1.3.0)
-* [Qounters- 1.1.0](https://github.com/danrouse/bsq-qounters-minus/releases/tag/1.1.0)
+* [Qosmetics 1.3.1+](https://github.com/RedBrumbler/Qosmetics/releases/latest/)
+* [Qounters- 1.1.0+](https://github.com/danrouse/bsq-qounters-minus/releases/latest/)
 
 ## Credits
 
