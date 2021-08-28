@@ -144,7 +144,7 @@ jobs:
     - name: Build
       run: |
         cd ${GITHUB_WORKSPACE}
-        pwsh -Command ./buildQMOD.ps1
+        pwsh -Command ./build.ps1
     # get the library name, by checking against the module ID
     - name: Get Library Name
       id: libname
@@ -169,14 +169,3 @@ jobs:
         path: ./obj/local/arm64-v8a/${{ steps.libname.outputs.NAME }}
         # if not found error obviously
         if-no-files-found: error
-
-       # Disabling qmod upload becasue people are getting qmods from GH actions when they should not
-#    - name: Upload qmod artifact
-#      uses: actions/upload-artifact@v2
-#      with:
-#        name: ${{ env.qmodName }}.qmod
-#        path: ./${{ env.qmodName }}.qmod
-#        # if not found error obviously
-#        if-no-files-found: error
-
-    # TODO: Add auto-populating releases, auto update versions, auto publish package on release
