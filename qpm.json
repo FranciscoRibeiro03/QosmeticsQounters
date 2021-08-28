@@ -4,7 +4,7 @@
   "info": {
     "name": "Qosmetics Qounters",
     "id": "QosmeticsQounters",
-    "version": "1.0.0-rc.1",
+    "version": "1.0.0",
     "url": null,
     "additionalData": {
       "overrideSoName": "libQosmeticsQounters.so"
