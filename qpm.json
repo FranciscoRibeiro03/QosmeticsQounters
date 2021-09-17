@@ -4,7 +4,7 @@
   "info": {
     "name": "Qosmetics Qounters",
     "id": "QosmeticsQounters",
-    "version": "1.0.0-rc.1",
+    "version": "1.0.1-rc.1",
     "url": null,
     "additionalData": {
       "overrideSoName": "libQosmeticsQounters.so"
@@ -13,7 +13,7 @@
   "dependencies": [
     {
       "id": "beatsaber-hook",
-      "versionRange": "^2.2.5",
+      "versionRange": "*",
       "additionalData": {
         "extraFiles": [
           "src/inline-hook"
@@ -22,17 +22,17 @@
     },
     {
       "id": "codegen",
-      "versionRange": "^0.12.5",
+      "versionRange": "^*",
       "additionalData": {}
     },
     {
       "id": "custom-types",
-      "versionRange": "^0.12.6",
+      "versionRange": "*",
       "additionalData": {}
     },
     {
       "id": "questui",
-      "versionRange": "^0.10.2",
+      "versionRange": "*",
       "additionalData": {}
     },
     {
