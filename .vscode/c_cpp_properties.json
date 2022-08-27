@@ -2,7 +2,7 @@
   "configurations": [
     {
       "defines": [
-        "MOD_ID=\"#{id}\"",
+        "MOD_ID=\"QosmeticsQounters\"",
         "VERSION=\"0.1.0\"",
         "__GNUC__",
         "__aarch64__"
@@ -15,7 +15,7 @@
         "${workspaceFolder}/shared", 
         "${workspaceFolder}",
         
-        "#{ndkpath}/**",
+        "/mnt/Data/000_Development/AndroidNDK/android-ndk-r23b-linux/**",
         "${default}"
       ],
       "name": "Quest",

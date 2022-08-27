@@ -2,7 +2,7 @@
 include(qpm_defines.cmake)
 
 # override mod id
-set(MOD_ID "#{id}")
+set(MOD_ID "QosmeticsQounters")
 
 # Enable link time optimization
 # In my experience, this can be highly unstable but it nets a huge size optimization and likely performance
@@ -31,6 +31,7 @@ add_compile_options(-O3)
 # compile definitions used
 add_compile_definitions(VERSION=\"${MOD_VERSION}\")
 add_compile_definitions(MOD_ID=\"${MOD_ID}\")
+add_compile_definitions(ID=\"${MOD_ID}\")
 
 # recursively get all src files
 RECURSE_FILES(cpp_file_list ${SOURCE_DIR}/*.cpp)
@@ -99,3 +100,5 @@ add_custom_command(TARGET ${COMPILE_ID} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy ${a_file} debug/${file}
         COMMENT "Copy a files for ndk stack")
         endforeach()
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
