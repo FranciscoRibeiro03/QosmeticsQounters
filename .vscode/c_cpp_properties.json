@@ -1,26 +1,29 @@
 {
-    "configurations": [
-        {
-            "defines": [
-                "ID=\"QosmeticsQounters\"",
-                "VERSION=\"1.0.0-rc.1\"",
-                "__GNUC__",
-                "__aarch64__"
-            ],
-            "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/shared",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/extern/**",
-                "${workspaceFolder}/extern/libil2cpp/il2cpp/libil2cpp",
-                "D:/000_Development/AndroidNDK/android-ndk-r22b/**",
-                "${workspaceFolder}/include"
-            ],
-            "name": "Quest",
-            "cStandard": "c11",
-            "cppStandard": "c++20",
-            "intelliSenseMode": "clang-x64"
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "defines": [
+        "MOD_ID=\"#{id}\"",
+        "VERSION=\"0.1.0\"",
+        "__GNUC__",
+        "__aarch64__"
+      ],
+      "includePath": [
+        "${workspaceFolder}/extern/includes/libil2cpp/il2cpp/libil2cpp", 
+        "${workspaceFolder}/extern/includes/codegen/include", 
+        "${workspaceFolder}/extern/includes", 
+        "${workspaceFolder}/include", 
+        "${workspaceFolder}/shared", 
+        "${workspaceFolder}",
+        
+        "#{ndkpath}/**",
+        "${default}"
+      ],
+      "name": "Quest",
+      "cStandard": "c11",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "clang-x64",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+    }
+  ],
+  "version": 4
 }

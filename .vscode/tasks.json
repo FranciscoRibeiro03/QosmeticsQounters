@@ -45,19 +45,6 @@
             }
         },
         {
-            "label": "Powershell Build, Copy and Log",
-            "detail": "Builds and copies the library to the Quest using ADB and force-quits Beat Saber",
-            "type": "shell",
-            "command": "./copy.ps1 --log",
-            "windows": {
-                "command": "./copy.ps1 --log"
-            },
-            "group": "build",
-            "options": {
-                "env": {}
-            }
-        },
-        {
             "label": "QMOD Build",
             "detail": "Builds a .qmod to be installed into BMBF or QuestPatcher",
             "type": "shell",

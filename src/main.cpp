@@ -28,7 +28,7 @@ Logger& getLogger() {
 
 // Called at the early stages of game loading
 extern "C" void setup(ModInfo& info) {
-    info.id = ID;
+    info.id = MOD_ID;
     info.version = VERSION;
     modInfo = info;
 	
@@ -38,11 +38,12 @@ extern "C" void setup(ModInfo& info) {
 
 // Called later on in the game loading - a good time to install function hooks
 extern "C" void load() {
+    il2cpp_functions::Init();
+
     // Ensure Qounters- is loaded
     getLogger().info("Ensuring Qounters- is loaded");
     Modloader::requireMod("qounters-minus", QOUNTERS_MINUS_VERSION);
-    il2cpp_functions::Init();
-
+    
     // Check if Qosmetics exists. If it doesn't, stop loading the mod (it doesn't make sense to have the mod in this case)
     getLogger().info("Ensuring Qosmetics is loaded");
     Modloader::requireMod("questcosmetics");
